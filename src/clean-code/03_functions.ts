@@ -1,63 +1,51 @@
 interface Movie {
     title: string;
-    description: string; 
-    rating: number; 
+    description: string;
+    rating: number;
     cast: string[];
 }
 
 
 (() => {
 
-    function getMovieById( id: string ) {
+    function getMovieById(id: string) {
         console.log({ movieId: id });
     }
 
-    function getMovieCastById( id: string ) {
+    function getMovieCastById(id: string) {
         console.log({ id });
     }
 
-    function getActorBioById( id: string ) {
+    function getActorBioById(id: string) {
         console.log({ id });
     }
-    
+
     function createMovie(movie: Movie) {
         console.log(movie);
     }
 
 
-    function checkFullName(fullName:string) {
-        console.log({fullName});
+    function checkFullName(fullName: string) {
+        console.log({ fullName });
         return true;
     }
 
-    function createActor( fullName: string, birthdate: Date ): boolean {
-        
+    function createActor(fullName: string, birthdate: Date): boolean {
+
         // tarea asincrona para verificar nombre
         checkFullName(fullName);
 
-        if ( fullName === 'fernando' ) return false;
+        if (fullName === 'fernando') return false;
 
         console.log('Crear actor');
-        return true;        
+        return true;
     }
 
     const getPayAmount = ({ isDead = false, isSeparated = true, isRetired = false }): number => {
-        let result: number;
+        if (isDead) return 1500;
 
-        if ( isDead ) {
-            result = 1500;
-        } else {
-            if ( isSeparated ) {
-                result = 2500;
-            } else {
-                if ( isRetired ) {
-                    result = 3000;
-                } else {
-                    result = 4000; 
-                }
-            }
-        }
+        if (isSeparated) return 2500;
         
-        return result;
+        return (isRetired) ? 3000 : 4000;
     }
 })();
